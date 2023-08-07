@@ -70,11 +70,13 @@ class BleService {
 
     DiscoveredDevice? oldDevice = bleDiscoveredDevicesList
         .firstWhereOrNull((element) => element.id == device.id);
-    if (oldDevice == null) {
+    if(device.manufacturerData.length==4){
+      if (oldDevice == null) {
       bleDiscoveredDevicesList.add(device);
     } else {
       int oldDeviceIndex = bleDiscoveredDevicesList.indexOf(oldDevice);
       bleDiscoveredDevicesList[oldDeviceIndex] = device;
+    }
     }
   }
 
