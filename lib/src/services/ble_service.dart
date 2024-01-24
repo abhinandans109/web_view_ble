@@ -189,6 +189,7 @@ class BleService {
     if (isConnected) {
       connectionMap[deviceId] = connectionStreamSubscription;
      int mtu= await flutterReactiveBle.requestMtu(deviceId: deviceId, mtu: 500);
+      if(mtu>500)mtu=500;
       controller.evaluateJavascript(source: 'window.mtu=$mtu').then((value) => print("############jsValueMTU $value"));
      print("MTU : $mtu");
     }
