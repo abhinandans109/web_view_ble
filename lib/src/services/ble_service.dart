@@ -46,6 +46,11 @@ class BleService {
           print('Here in this function');
           String? name = filter['name'];
           String? namePrefix = filter['namePrefix'];
+
+          if(device.manufacturerData.length <= 0){
+            return false;
+          }
+          
           print('fm:${filter['manufacturerData'][0]['dataPrefix'][0]} fm:${filter['manufacturerData'][0]['dataPrefix']['0']} , dm: ${device.manufacturerData[2]},dm: ${device.manufacturerData[3]}');
           if(filter['manufacturerData'][0]['dataPrefix']['0']==device.manufacturerData[2] && filter['manufacturerData'][0]['dataPrefix']['1']==device.manufacturerData[3]){
               return true;
