@@ -319,6 +319,7 @@ class BleService {
         .map((e) => DiscoveredCharacteristic(
               characteristicId:
                   Uuid.parse(validateUUid(e.characteristicId.toString())),
+              characteristicInstanceId: e.characteristicInstanceId,
               serviceId: validService,
               isReadable: e.isReadable,
               isWritableWithResponse: e.isWritableWithResponse,
@@ -329,6 +330,7 @@ class BleService {
         .toList();
     return DiscoveredService(
         serviceId: validService,
+        serviceInstanceId: service.serviceInstanceId,
         characteristicIds: validCharacteristics,
         characteristics: characersitics);
   }
